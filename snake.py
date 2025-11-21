@@ -47,6 +47,8 @@ class Snakegame:
         self.food()
         self.direction = "right"
         self.gameover = False
+        self.score = 0
+        self.scorecounter["text"] = f"SCORE: {self.score}"
         self.tick()
 
     def set_grid(self):
