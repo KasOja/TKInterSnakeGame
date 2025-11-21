@@ -27,7 +27,7 @@ class Snakegame:
         self.speed -= 1
         if self.speed < 1:
             self.speed = 7
-        self.speedbutton["text"] = f"SCORE: {self.speed}"
+        self.speedbutton["text"] = f"SPEED: {self.speed}"
 
     def keybinds(self):
         self.window.bind("w", lambda x: self.change_direction("up"))
@@ -175,4 +175,5 @@ class Snakegame:
             pos = random.choice(self.grid)
         pos[4] = True
                     
+
 Snakegame()
