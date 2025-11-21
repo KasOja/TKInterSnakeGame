@@ -175,5 +175,5 @@ class Snakegame:
             pos = random.choice(self.grid)
         pos[4] = True
                     
-
-Snakegame()
+if __name__ == "__main__":
+    Snakegame()
