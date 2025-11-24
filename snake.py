@@ -87,11 +87,9 @@ class Snakegame:
         for d in directions:
             if d == direction and self.grid[self.grid.index(self.snake_pos[0])+changes[directions.index(direction)]] == self.snake_pos[1]:
                 return
-
         if direction == self.direction or directions.index(direction) == directions.index(self.direction) - 2 or directions.index(direction) == directions.index(self.direction) + 2:
             return
         else:
-            self.dirchangepending = True
             self.direction = direction
             
     def move_snake(self):
