@@ -82,14 +82,19 @@ class Snakegame:
                     i[3] = True
 
     def change_direction(self, direction):
-        if not self.dirchangepending:
-            directions = ["left", "up", "right", "down"]
-            if direction == self.direction or directions.index(direction) == directions.index(self.direction) - 2 or directions.index(direction) == directions.index(self.direction) + 2:
-                return
-            else:
-                self.dirchangepending = True
-                self.direction = direction
+        directions = ["left", "up", "right", "down"]
+        changes = [-1, -17, 1, 17]
+        for d in directions:
+            if d == direction:
+                if self.grid[self.grid.index(self.snake_pos[0])+changes[directions.index(direction)]] == self.snake_pos[1]:
+                    return
 
+        if direction == self.direction or directions.index(direction) == directions.index(self.direction) - 2 or directions.index(direction) == directions.index(self.direction) + 2:
+            return
+        else:
+            self.dirchangepending = True
+            self.direction = direction
+            
     def move_snake(self):
         head = self.snake_pos[0]
         self.snake_pos[-1][3] = False
@@ -140,8 +145,6 @@ class Snakegame:
 
     def tick(self):
         self.move_snake()
-        if self.dirchangepending:
-            self.dirchangepending = False
         if self.gameover == True:
             return
 
