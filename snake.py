@@ -84,10 +84,13 @@ class Snakegame:
     def change_direction(self, direction):
         directions = ["left", "up", "right", "down"]
         changes = [-1, -17, 1, 17]
-        for d in directions:
-            if d == direction and self.grid[self.grid.index(self.snake_pos[0])+changes[directions.index(direction)]] == self.snake_pos[1]:
-                return
-        if direction == self.direction or directions.index(direction) == directions.index(self.direction) - 2 or directions.index(direction) == directions.index(self.direction) + 2:
+        headindex = self.grid.index(self.snake_pos[0])
+        if headindex >= 238 and direction == "down":
+            headindex -= 238
+
+        if self.grid[headindex+changes[directions.index(direction)]] == self.snake_pos[1]:
+            return
+        elif direction == self.direction or directions.index(direction) == directions.index(self.direction) - 2 or directions.index(direction) == directions.index(self.direction) + 2:
             return
         else:
             self.direction = direction
