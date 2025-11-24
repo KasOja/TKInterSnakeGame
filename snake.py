@@ -38,6 +38,7 @@ class Snakegame:
         self.window.bind("<Left>", lambda x: self.change_direction("left"))
         self.window.bind("d", lambda x: self.change_direction("right"))
         self.window.bind("<Right>", lambda x: self.change_direction("right"))
+        self.window.bind("<Return>", lambda x: self.button.invoke())
     
     def start(self):
         self.score = 0
@@ -172,9 +173,7 @@ class Snakegame:
         self.food()
 
     def food(self):
-        pos = random.choice(self.grid)
-        while pos[3] == True:
-            pos = random.choice(self.grid)
+        pos = random.choice([i for i in self.grid if i[3]!=True])
         pos[4] = True
                     
 if __name__ == "__main__":
