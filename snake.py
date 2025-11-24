@@ -87,7 +87,6 @@ class Snakegame:
         headindex = self.grid.index(self.snake_pos[0])
         if headindex >= 238 and direction == "down":
             headindex -= 238
-
         if self.grid[headindex+changes[directions.index(direction)]] == self.snake_pos[1]:
             return
         elif direction == self.direction or directions.index(direction) == directions.index(self.direction) - 2 or directions.index(direction) == directions.index(self.direction) + 2:
